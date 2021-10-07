@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-07</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="pushTodo">push</button>
+        <ul class="todos">
+            <li v-for="(todo, index) in todos"
+                :key="index">
+                {{ todo.title }}
+            </li>
+        </ul>
+    </div>
+    <!-- 
+        변이 메소드 : 뷰는 감시 중인 배열의 변이 메소드를 래핑하여 뷰 갱신을 트리거합니다.
+        래핑된 메소드는 다음과 같습니다.
+
+        push() : 배열의 마지막에 데이터 삽입
+        pop() : 배열의 마지막 요소를 추출하여 반환
+        shift() : 배열의 첫 번째 요소를 추출하여 반환
+        unshift() : 배열의 첫 번째에 데이터를 삽입
+        splice() : 인덱스를 활용하여 데이터를 추가, 삭제
+        sort() : 배열 정렬
+        reverse() : 배열을 뒤집음
+     -->
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: { 
+                todos:  [
+                    { title: '아침 먹기' },
+                    { title: '점심 먹기' },
+                    { title: '저녁 먹기' }
+                ]
+            },
+            methods: {
+                pushTodo () {
+                    //this.todos[3] = { title: '야식먹기' }
+                    this.todos.push({
+                        title: '야식 먹기'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
