@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-09</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--
+        이벤트 수식어
+        v-on 이벤트에 이벤트 수식어를 제공한다.
+        (수식어는 점으로 표시된 접미사입니다.)
+        .stop - 이벤트 버블링 차단
+        .prevent - 이벤트 시작하지 않음
+        .capture - 이벤트 캡처링 옵션
+        .self - 이벤트가 발생한 요소에서만 사용
+        .once - 이벤트 한번만 실행
+        .passive - 모바일 환경에서 이벤트 충돌되는 요소들 차단
+    -->
+
+    <style>
+        .parent {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+    <div id="app">
+        <div class="parent"
+            @click.self="clickHandler()">
+            <div class="child"
+            ></div>
+        </div>
+    </div>
+
+    <div id="app2">
+        <div class="parent"
+            @click="clickHandler2()">
+            <div class="child"
+            @click.stop="clickHandler2()"
+            ></div>
+        </div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            methods: {
+                clickHandler () {
+                    console.log(event.currentTarget.className)
+                },
+            }
+        })
+
+        const vm2 = new Vue({
+            el: '#app2',
+            methods: {
+                clickHandler2 () {
+                    console.log(event.currentTarget.className)
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
