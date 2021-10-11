@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-11</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <!-- 
+            컴포넌트는 재사용성이 편리하다
+            컴포넌트는 특정한 이유에 의해서 분리가 용이함
+         -->
+         <my-component />
+    </div>
+    <div id="app2">
+        <my-comp />
+        <!-- 템플릿 안에서는 케밥 케이스를 사용하자 -->
+    </div>
+    
+    <script>
+        //전역 등록
+        /*
+        Vue.component('my-component', {
+            template: '<div class="me">{{ message }}</div>',
+            data: function() {
+                return {
+                    message: 'hello vue!'
+                }
+            }
+        })
+        */
+       //지역등록
+       const myComp = {
+            template: '<div class="me">{{ message }}</div>',
+            data: function() {
+                return {
+                    message: 'hello vue!'
+                }
+            }
+        }
+        
+        const vm1 = new Vue({
+            el: '#app1',
+            components: {
+                'my-component': myComp
+            }
+            
+        })
+        const vm2 = new Vue({
+            el: '#app2',
+            components: {
+                myComp
+                //카멜케이스를 사용하자
+            }
+        })
+    </script>
+</body>
+</html>
