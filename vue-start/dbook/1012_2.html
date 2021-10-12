@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-12</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+
+    </style>
+    <!--
+        텍스트와 속성 뿐만 아니라 dom의 구조에도 데이터를 바인딩할 수 있음을 보여 줍니다. 또한 뷰의 엘리먼트가 뷰에 삽입/갱신/제거될 때 자동으로 트렌지션 효과를 적용할 수 있는 강력한 시스템을 제공합니다.
+    -->
+     <!--
+    <div id="app">
+        <div v-if="message">
+            {{ message }} ~~
+        </div>
+    </div>
+    -->
+    <div id="app">
+        <ul>
+            <li v-for="item in items"
+                v-bind:key="item.id">
+                {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        /*
+        const vm  = new Vue({
+            el: '#app',
+            data: {
+                show: false,
+                //v-if false일 경우 화면에 랜더링 되지 않음
+                message:''
+                //빈문자 데이터는 if문에서 false로 읽혀짐
+                //숫자 데이터 0은 if문에서 false로 읽혀짐
+            }
+        })
+        */
+       const vm = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                {
+                    id: '1',
+                    message: 'hello'
+                },
+                {
+                    id: '2',
+                    message: 'good'
+                },
+                {
+                    id: '3',
+                    message: 'my first vue app'
+                }
+            ]
+        }
+       })
+    </script>
+</body>
+</html>

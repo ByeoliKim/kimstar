@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-12</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<style>
+    .text {
+    font-size:70px;
+    }
+    .text.active {
+    color:red;
+    }
+</style>
+        <!-- {{  }} 템플릿 언어 -->
+        <!--
+            v-bind 속성은 디렉디브
+            v- 접두어가 붙어 있으면 dom에 특수한 반응성 동작을 한다.
+
+        -->
+    <div id="app">
+        <div class="text" :class="{ 'active': active }">
+          {{ message }}
+        </div>
+      </div>
+    <script>
+        const vm  = new Vue({
+            el: '#app',
+            data: {
+            message: 'hello vue!',
+            active: true
+            }
+        })
+    </script>
+</body>
+</html>
