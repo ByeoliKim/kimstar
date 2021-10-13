@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-13</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .box { 
+            width:150px; height:150px; background-color: blue; border-radius:10px;
+            cursor: pointer; transition: 1s;
+            color:#fff;
+            display:flex; justify-content: center; align-items: center;
+         }
+         .box.active {
+             width:400px; background-color: tomato;
+         }
+    </style>
+    
+    <div id="app">
+        <div class="box" v-bind:class="{ active: toggle }">
+            {{ message }}
+        </div>
+        <button v-on:click="toggleElement()">toggle</button>
+        <input type="text" v-model="message">
+    </div>
+    <script>
+       const vm = new Vue({
+        el: '#app',
+        data: {
+            toggle: false,
+            message:'',
+        },
+        methods: {
+            toggleElement() {
+                this.toggle = !this.toggle
+            }
+        }
+        
+       })
+    </script>
+
+</body>
+</html>
