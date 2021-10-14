@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-14</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-comp :my-msg="message"></my-comp>
+        <!-- props에서 required 를 true로 설정 시 component에 기본값을 추가하지 않았을 시 에러가 뜸. -->
+        <!-- HTML에서 사용할 때는 케밥 케이스 -->
+        <!-- JS 에서 사용할 때는 카멜 케이스 -->
+    </div>
+    <script>
+        Vue.component('my-comp', {
+            template: '<div>{{ myMsg }}</div>',
+            props: {
+                myMsg: {
+                    type: [String, Number],
+                    default: 'Default!',
+                    required: true,
+                    //유효성 검사
+                    validator: function(value) {
+                        return value === 'Hello'
+                        //value가 일치하지 않으면 유효성 검사에 통과하지 못했다는 유효성 검사 결과가 출력된다.
+                    }
+                }
+            }
+        })
+
+        //부모
+        const vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    message: 'Hello'
+                }
+            },
+        })
+    </script>
+</body>
+</html>
