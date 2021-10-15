@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-15</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ msgA }}</div>   
+        <div>{{ msgB }}</div>
+        <button @click="changeMessage()">Change!</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msgA: 'message A.',
+                msgB: ''
+                //msgB를 당장 사용하지 않더라도 null 값으로 넣어놔야 한다.
+            },
+            //data : 사용할 데이터를 정의한다 (원시 데이터)
+            methods: {
+                changeMessage() {
+                    this.msgA = 'Changed message A!'
+                    //this 는 뷰 인스턴스 자체를 뜻한다.
+                    this.msgB = 'Changed message B!'
+                }
+            },
+            computed: {},
+            //computed : 계산된 데이터, 계산해서 화면에 랜더링
+            watch: {
+                msgA (value) {
+                    console.log(value)
+                    //msgA가 데이터가 변경될 때마다 watch 함수가 msgA를 관찰하여 실행된다.
+                }
+            },
+            //watch : data에 데이터를 정의해 놓으면 반응성이 생긴다.
+            created() {
+                //lifecyclehook
+            },
+            mounted() {
+                //lifecyclehook
+            }
+        })
+        console.log(vm);
+        //$ : 달러 표시는 뷰에서 제공하는 요소들이다.
+    </script>
+</body>
+</html>

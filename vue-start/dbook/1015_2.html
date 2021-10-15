@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-15</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div ref="msgggggggggg">{{ msg }}</div>
+        <div ref="divdivname"></div>
+        <!-- ref : 이 요소를 참조하겠다 -->
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+               msg: 'hello vue!'
+            },
+            //data : 사용할 데이터를 정의한다 (원시 데이터)
+            computed: {
+                 //computed : 계산된 데이터, 계산해서 화면에 랜더링
+            },
+            watch: {
+               //watch : data에 데이터를 정의해 놓으면 반응성이 생긴다.
+            },
+            beforeCreate() {
+                //lifecyclehook
+                //생성되기 전 
+                console.log('beforeCreate!!!!!', this.msg)
+                //this.msg = undefined
+            },
+            created() {
+                //lifecyclehook
+                console.log('created!!!!', this.msg)
+            },
+            beforeMount() {
+                console.log('beforeMount', this.$refs)
+            },
+            mounted() {
+                //lifecyclehook
+                console.log('mounted', this.$refs);
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate!!!',this.$refs.msgggggggggg.innerText);
+            },
+            updated() {
+                console.log('updated!!!!',this.$refs.msgggggggggg.innerText);
+            }
+            //훅은 순서가 상관 없다 뷰에서 지정해 놓은 순서가 있기 때문에~~~
+        })
+        //라이프 사이클 훅
+        //***제일 많이 사용되는 훅들****
+        //1. init > beforeCreate()
+        //2. init > injections & reactivity(반응성)
+        //3. ***created() > beforeCreate보다 자주 사용한다***
+        //   el 있는지 체크, template 있는지 체크
+        //   랜더링
+        //4. 연결 전 beforeMount < dom이 연결되기 전 상태
+        //5. ***연결 후 mounted ()***
+        //6. 데이터가 갱신될 때...
+        //   데이터가 갱신되었지만 화면을 그리기 전 beforeUpdate() 실행
+        //7. 데이터가 갱신되었고, 화면을 그린 후 실행되는 것이 updated()
+        //8. 뷰 인스턴스 파괴 시 $destroy() is called
+        //   없어지기 직전 beforeDestroy()
+        //9. 파괴된 후, watch같이 특정한 데이터를 감시하는 것들을 없애고,
+        //   자식 컴포넌트들의 이벤트 연결 같은 것들을 해제한다.
+        //   반응성도 사라짐
+        //10. destroyed() 파괴된 상태
+    </script>
+</body>
+</html>
