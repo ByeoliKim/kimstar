@@ -48,6 +48,9 @@
             },
             updated() {
                 console.log('updated!!!!',this.$refs.msgggggggggg.innerText);
+            },
+            destroyed(){
+                console.log('destroyed!!!!',this.$refs.msgggggggggg.innerText);
             }
             //훅은 순서가 상관 없다 뷰에서 지정해 놓은 순서가 있기 때문에~~~
         })

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-18</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .normal {
+            color:blue;
+        }
+        .active {
+            color:red;
+        }
+    </style>
+    <div id="app">
+        <!--
+        <div v-once>{{msg}}</div>
+         v-once : 랜더링은 한 번만 하겠다.
+        -->
+        <!-- 
+            <div v-html="msg">{{msg}}</div>
+            v-html : 해당 디렉티브 사용 시 html로 적용시켜 출력된다.
+         -->
+         <!--
+             특정한 자바스크립트의 표현식이 사용 가능하다.
+
+         -->
+        <div    :class="className"
+                @click="changeClassName()">
+                {{ msg }}
+        </div>
+        <!--
+            v-bind 약어 -> :
+            v-on:click :  @
+        -->
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                //msg: 'hello vue!<br/>good job~',
+                msg: 'hello vue!',
+                className: 'normal',
+                number: 2
+            },
+            methods: {
+                changeClassName () {
+                    this.className = 'active'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
