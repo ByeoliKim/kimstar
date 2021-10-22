@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-22</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="pushTodo">PUSH</button>
+        <ul class="todos">
+            <li v-for="(todo, index) in todos"
+                :key="index">{{ todo.title }}</li>
+        </ul>
+        <ul class="star">
+            <li v-for="(stars, key, index) in star"
+                :key="index">{{ stars }}</li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                    { title: '아침먹기' },
+                    { title: '점심먹기' },
+                    { title: '저녁먹기' },
+                ],
+                star: {
+                    name: 'byeoli kim',
+                    age: 26,
+                    //객체를 반복할 때는 (value, key, index)
+                    //homepage: '',
+                    //email: ''
+                    //Object.assign 객체와 객체를 합쳐줌
+                    //vm.star = Object.assign({}, vm.star, { homepage: 'naver.com', a: 'A', b: 'B' })
+                }
+            },
+            methods: {
+                pushTodo() {
+                    //this.todos[3] = { title: '야식먹기' }
+                    //△반응성이 적용이 안 돼서 데이터는 갱신됐지만 화면은 갱신이 안 됐음
+                    // = 를 써서 할당하는 방법은 사용하면 안 됨
+                    //this.todos.push({title:'야식먹기'})
+                    //배열 변이 메소드들을 사용합시다
+                    Vue.set(this.todos, 3, { title: '야식먹깅'})
+                    //set() 을 사용하면 반응성으로 쉽게 넣을 수 있음
+                }
+            }
+        })
+    </script>
+</body>
+</html>

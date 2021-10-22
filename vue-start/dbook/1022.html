@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-22</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .box{
+            width: 200px;
+            height: 150px;
+            background-color: red;
+        }
+    </style>
+    <div id="app">
+        <button @click="toggle">Toggle</button>
+        <!-- show : 단순하게 css로 안 보이게만 함 화면에는 안 보이지만 요소는 있는 것
+            v-if는 토글 비용이 높고 초기 랜더링 비용이 낮다
+            일반적으로는 v-if를 사용하지만,
+            매우 자주 바꾸기를 원한다면 v-show 를 사용하셈
+        -->
+        <div v-if="show" 
+            class="box">
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                toggle () {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>
