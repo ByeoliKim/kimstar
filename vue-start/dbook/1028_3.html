@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-28</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component />
+    </div>
+    <div id="app2">
+        <my-component />
+    </div>
+    <script>
+        //전역 등록
+        Vue.component('my-component', {
+            template: '<div class="me">{{message}}</div>',
+            data: function() {
+                //컴포넌트에서는 데이터를 함수로 생성해야 함
+                return {
+                    message: 'hello vue!'
+                }
+            }
+        })
+        
+        //지역등록
+        const myComp = {
+            template: '<div class="me">{{message}}</div>',
+            data: function() {
+                //컴포넌트에서는 데이터를 함수로 생성해야 함
+                return {
+                    message: 'hello vue!'
+                }
+            }
+        }
+
+        const vm = new Vue({
+            el: '#app',
+        })
+        const vm2 = new Vue({
+            el: '#app2',
+        })
+    </script>
+</body>
+</html>

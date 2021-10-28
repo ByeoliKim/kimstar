@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021-10-28</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" 
+        @change="message = $event.target.value"
+        :value="message"> -->
+        <!-- <input type="text" v-model.lazy="message"> change 이벤트와 동일하다 -->
+        <!-- <input type="text" v-model.trim="message"> 문자 데이터의 공백을 지워준다 -->
+        <input type="text" v-model.number="message"> 
+        <div>{{ message }}</div>
+        <div>{{ typeof message }}</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello~'
+            },
+        })
+    </script>
+</body>
+</html>
