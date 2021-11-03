@@ -1,10 +1,16 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+require('@babel/polyfill')
 
 module.exports = {
     //진입점
     entry: {
-        app: path.join(__dirname, 'main.js')
+        app: [
+          '@babel/polyfill',
+          path.join(__dirname, 'main.js')
+        ]
     },
     //결과물에 대한 설정
     output: {
@@ -15,11 +21,26 @@ module.exports = {
         rules: [
           {
             test: /\.vue$/,
-            loader: 'vue-loader'
+            use: 'vue-loader'
+          },
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: 'babel-loader'
+          },
+          {
+            test: /\.css$/,
+            use: [
+              'vue-style-loader',
+              'css-loader'
+            ]
           }
         ]
       },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+          template: path.join(__dirname, 'index.html')
+        })
     ]
 }
