@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
     data () {
         return {
@@ -14,5 +13,5 @@ export default {
 </script>
 
 <style scoped>
-h1 { color:#ff0000; }
+    h1 { color:red; }
 </style>
