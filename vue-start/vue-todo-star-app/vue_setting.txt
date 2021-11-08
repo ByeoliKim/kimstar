@@ -1,0 +1,45 @@
+뷰 세팅
+
+1. npm init -y
+-  package.json 생성
+
+2. npm i -D webpack webpack-cli
+
+3. webpack.config.js 파일 생성
+
+4. module.exports ={
+	entry: '',
+	output: '',
+	module:{}
+	plugins:[]
+}
+
+5. npm install -D vue-loader vue-template-compiler
+
+6. App.vue 파일 생성
+
+7. 스크립트와 css 해석을 위한 loader가 필요함
+
+8. npm i vue
+
+9. npm i -D babel-loader vue-style-loader css-loader
+
+10. npm i -D @babel/core @babel/preset-env
+
+11. npm i @babel/polyfill
+
+12. npm i -D html-webpack-plugin
+
+13. npm i -D copy-webpack-plugin
+webpack.config.js > new CopyPlugin(
+            {
+                patterns: [
+                    { from: 'assets/', to: '' }
+                ]
+                
+            }
+        ),
+
+14. npm run build
+
+15. npm i -D clean-webpack-plugin
