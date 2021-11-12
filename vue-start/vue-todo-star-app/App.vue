@@ -6,12 +6,12 @@
 export default {
     data () {
         return {
-            msg: 'hellooooo vue!'
+            msg: 'Hello Vue.'
         }
     }
 }
 </script>
 
 <style scoped>
-    h1 { color: pink; }
+    h1 { color: pink; font-size:54px; }
 </style>
